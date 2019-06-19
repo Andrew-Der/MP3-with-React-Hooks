@@ -2,22 +2,28 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import MusicPlayer from './MusicPlayer'
+import TrackList from './TrackList'
+import PlayerControls from './PlayerControls'
+
+function App(props) {
+
+  const {defaultPlaying, defaultIndex} = props
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MusicPlayer className="MusicPlayer" 
+        defaultPlaying={defaultPlaying || false} 
+        defaultIndex={defaultIndex || 0}>
+
+          <div className="container">
+            <TrackList id="TrackList"/>
+          </div>
+
+          <div>
+            <PlayerControls/>
+          </div>
+        </MusicPlayer>
       </header>
     </div>
   );
