@@ -6,32 +6,44 @@ import {faPause, faPlay, faStepBackward, faStepForward} from "@fortawesome/free-
 import { MusicPlayerContext } from './MusicPlayer'
 import { useMusicPlayer } from './useMusicPlayer'
 
+/* Component that uses custom Hooks */
 export default function PlayerControls (props) {
 
-	const { state } = useContext(MusicPlayerContext)
-	const { isPlaying, setIsPlaying } = state
-	/* using a custom Hook! */
-	const { playTrack, playPreviousTrack, playNextTrack } = useMusicPlayer()
-	//console.log(state)
+	/* getting functions and vars using a custom Hook! */
+	const { 
+		playTrack, 
+		playNextTrack, 
+		playPreviousTrack, 
+		isPlaying, 
+		activeIndex, 
+		currentTrackName, } = useMusicPlayer()
 
 	return (
-		<React.Fragment>
-		<button id="PreviousButton" onClick={() => {playPreviousTrack()}}
-			>
-			<FontAwesomeIcon icon={faStepBackward}/>
-		</button>
-		<button id="PlayButton" onClick={(e) => {
-			playTrack(state.activeIndex)}}
-			>
-			{isPlaying ? <FontAwesomeIcon id="Play" icon={faPause} /> : <FontAwesomeIcon id="Pause" icon={faPlay} />}
-		</button>
-		<button id="NextButton" onClick={() => playNextTrack()}
-			>
-			<FontAwesomeIcon icon={faStepForward}/>
-		</button>
-        <div className="current-track has-text-light">
-          <h3 id="MusicLabel">{state.tracks[state.activeIndex].name}</h3>
-        </div>
-		</React.Fragment>
+		<div className="box controls has-background-info">
+			<button id="PreviousButton" onClick={() => 
+				playPreviousTrack()}
+				>
+				<FontAwesomeIcon className="fa-2x" icon={faStepBackward}/>
+			</button>
+
+			<button id="PlayButton" onClick={(e) => {
+				playTrack(activeIndex)}}
+				>
+				{isPlaying ? 
+					<FontAwesomeIcon id="Play" className="fa-2x" icon={faPause} /> : 
+					<FontAwesomeIcon id="Pause" className="fa-2x" icon={faPlay} />}
+			</button>
+
+			<button id="NextButton" onClick={() => 
+				playNextTrack()}
+				>
+				<FontAwesomeIcon className="fa-2x" icon={faStepForward}/>
+			</button>
+
+	        <div className="current-track has-text-light">
+	          <h3 id="MusicLabel">{currentTrackName}</h3>
+	        </div>
+
+		</div>
 	)
 }

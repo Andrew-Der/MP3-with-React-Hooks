@@ -4,14 +4,8 @@ import { MusicPlayerContext } from "./MusicPlayer";
 export function useMusicPlayer () {
   const {state, setState} = useContext(MusicPlayerContext);
 
-  // Play a specific track
+  /* Play or Pause a specific track */
   function playTrack(index) {
-  	//console.log(index)
-  	//console.log(state)
-  	/* handle wrapping */
-  	if (index === state.tracks.length) {
-  		index = 0
-  	}
 
     if (index === state.activeIndex) {
       setState({...state, 
@@ -25,6 +19,7 @@ export function useMusicPlayer () {
   }
 
   function playPreviousTrack() {
+    /* handle wrapping */
   	let currentIndex = state.activeIndex
   	if (currentIndex === 0) {
   		currentIndex = state.tracks.length
@@ -33,6 +28,7 @@ export function useMusicPlayer () {
   }
   
   function playNextTrack() {
+    /* handle wrapping */
   	let currentIndex = state.activeIndex
   	if (currentIndex === state.tracks.length - 1) {
   		currentIndex = -1
@@ -45,6 +41,7 @@ export function useMusicPlayer () {
   	playPreviousTrack,
   	playNextTrack,
   	trackList: state.tracks,
+    activeIndex: state.activeIndex,
   	isPlaying: state.isPlaying,
     currentTrackName: state.tracks[state.activeIndex].name
   }

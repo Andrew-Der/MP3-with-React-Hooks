@@ -8,22 +8,22 @@ import PlayerControls from './PlayerControls'
 
 function App(props) {
 
+  /* defaults used to pass into for testing */
   const {defaultPlaying, defaultIndex} = props
   return (
     <div className="App">
       <header className="App-header">
-        <MusicPlayer className="MusicPlayer" 
-        defaultPlaying={defaultPlaying || false} 
-        defaultIndex={defaultIndex || 0}>
+        <div className="box has-background-grey">
+          <MusicPlayer className="MusicPlayer" 
+          defaultPlaying={defaultPlaying} 
+          defaultIndex={defaultIndex}>
 
-          <div className="container">
-            <TrackList id="TrackList"/>
-          </div>
-
-          <div>
-            <PlayerControls/>
-          </div>
-        </MusicPlayer>
+            <div className="container">
+              <TrackList id="TrackList"/>
+              <PlayerControls/>
+            </div>
+          </MusicPlayer>
+        </div>
       </header>
     </div>
   );
