@@ -1,4 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Inspiration from here!
+- https://upmostly.com/tutorials/how-to-use-the-usecontext-hook-in-react/
+Styling from Bulma and Font Awesome!
+- https://www.npmjs.com/package/bulma
+- https://www.npmjs.com/package/font-awesome
+Audio from Youtube (free of course :) )!
+- https://www.youtube.com/audiolibrary/music
 
 ## Available Scripts
 
