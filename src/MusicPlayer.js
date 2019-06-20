@@ -1,10 +1,18 @@
 import React, {createContext, useContext, useEffect, useState} from 'react'
+import StuckInTheAir from './audio/Stuck_In_The_Air.mp3'
+import PlatosCase from './audio/Plato_s_Cave.mp3'
 
 export const MusicPlayerContext = createContext()
 
 export const tracks = [
-	{name: 'Once upon a time' },
-	{name: 'Song2'},
+	{
+		name: "Plato's Cave",
+		file: PlatosCase 
+	},
+	{
+		name: 'Stuck In The Air',
+	 	file: StuckInTheAir
+	 },
 	{name: 'Song3'},
 	{name: 'Song4'},
 	{name: 'Song5'},
@@ -18,7 +26,8 @@ export default function MusicPlayer (props) {
 	const [ state, setState ] = useState({
 		isPlaying : isPlaying,
 		activeIndex : activeIndex,
-		tracks: tracks
+		tracks: tracks,
+		audioPlayer: new Audio()
 	})
 
 	/* kind of way to pass hooks around in context 

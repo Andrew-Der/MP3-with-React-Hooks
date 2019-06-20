@@ -17,7 +17,7 @@ export default function TrackList (props) {
 		<ul className="SongList">
 		{trackList.map((curr, index) => {
 			return (
-			<li id={curr.name} key={curr.name}>
+			<li id={curr.name.split(" ").join("_")} key={curr.name}>
 		        <span className="box" style={{"textAlign" : "left"}}>
 		          <button className="button" onClick={() => 
 		          	playTrack(index)}

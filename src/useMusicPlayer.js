@@ -8,13 +8,22 @@ export function useMusicPlayer () {
   function playTrack(index) {
 
     if (index === state.activeIndex) {
+      if (process.env.NODE_ENV !== 'test') {
+        state.isPlaying ? state.audioPlayer.pause() : state.audioPlayer.play()
+      }
       setState({...state, 
       	isPlaying: !state.isPlaying});
     } else {
+      if (process.env.NODE_ENV !== 'test') {
+       state.audioPlayer.pause()
+       state.audioPlayer = new Audio(state.tracks[index].file)
+       state.audioPlayer.play()
+     }
       setState(state => ({ ...state, 
       	activeIndex: index, 
       	isPlaying: true 
       }));
+
     }
   }
 

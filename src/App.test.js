@@ -20,8 +20,8 @@ describe("The musicPlayer app ", ()=> {
 
   it("has same id for song names", () => {
     const wrapper = mount(<App/>)
-    expect(wrapper.find('#Song2').text()).toEqual('Song2')
-    expect(wrapper.find('#Song3').text()).toEqual('Song3')
+    expect(wrapper.find(`#${tracks[2].name}`).text()).toEqual(`${tracks[2].name}`)
+    expect(wrapper.find(`#${tracks[3].name}`).text()).toEqual(`${tracks[3].name}`)
     wrapper.unmount()
   });
 
@@ -39,7 +39,7 @@ describe("The musicPlayer app ", ()=> {
   it("plays song when song button paused and clicked", () => {
   	const songIndex = 1
     const wrapper = mount(<App/>)
-    const songButton = wrapper.find(`#${tracks[1].name}`).find('button')
+    const songButton = wrapper.find(`#${tracks[1].name.split(" ").join("_")}`).find('button')
     const musicLabel = wrapper.find(`#MusicLabel`)
     //expect(playButton.text()).toEqual('Paused')
     songButton.simulate('click')
@@ -50,7 +50,7 @@ describe("The musicPlayer app ", ()=> {
 
   it("pauses song when song button playing and clicked", () => {
     const wrapper = mount(<App defaultPlaying={true} defaultIndex={1}/>)
-    const songButton = wrapper.find(`#${tracks[1].name}`).find('button')
+    const songButton = wrapper.find(`#${tracks[1].name.split(" ").join("_")}`).find('button')
     //expect(playButton.text()).toEqual('Paused')
     songButton.simulate('click')
     expect(wrapper.find('#Pause').exists()).toEqual(true)
