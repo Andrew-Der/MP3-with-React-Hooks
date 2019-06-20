@@ -7,7 +7,7 @@ import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 export default function TrackList (props) {
 
-	/* Using context to get vars */
+	/* Using context to read vars */
 	const { currentTrackNameFromContext } = useContext(MusicPlayerContext)
 	/* Using custom hooks to get functions and vars */
 	const { isPlaying, playTrack, trackList } = useMusicPlayer()
@@ -15,22 +15,29 @@ export default function TrackList (props) {
 	return (
 	<React.Fragment>
 		<ul className="SongList">
+
 		{trackList.map((curr, index) => {
 			return (
+
 			<li id={curr.name.split(" ").join("_")} key={curr.name}>
 		        <span className="box" style={{"textAlign" : "left"}}>
+
 		          <button className="button" onClick={() => 
 		          	playTrack(index)}
 		          	>
-		            {currentTrackNameFromContext === curr.name && isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
+		            {currentTrackNameFromContext === curr.name && isPlaying ? 
+		            	<FontAwesomeIcon icon={faPause} /> : 
+		            	<FontAwesomeIcon icon={faPlay} />}
 		          </button>
 		          <span id="songName" className="song-title">
 		            {curr.name}
 		          </span>
+
 		        </span>
 			</li>
 			)
 		})}
+
 		</ul>
 	</React.Fragment>
 	)

@@ -15,13 +15,14 @@ function App(props) {
       <header className="App-header">
         <div className="box has-background-grey">
           <MusicPlayer className="MusicPlayer" 
-          defaultPlaying={defaultPlaying} 
-          defaultIndex={defaultIndex}>
+            defaultPlaying={defaultPlaying} 
+            defaultIndex={defaultIndex}>
 
             <div className="container">
               <TrackList id="TrackList"/>
               <PlayerControls/>
             </div>
+
           </MusicPlayer>
         </div>
       </header>
