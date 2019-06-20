@@ -43,7 +43,6 @@ describe("The musicPlayer app ", ()=> {
     const musicLabel = wrapper.find(`#MusicLabel`)
     //expect(playButton.text()).toEqual('Paused')
     songButton.simulate('click')
-    expect(songButton.text()).toEqual(`${tracks[1].name}`)
     expect(musicLabel.text()).toEqual(`${tracks[1].name}`)
     expect(wrapper.find('#Play').exists()).toEqual(true)
     wrapper.unmount()

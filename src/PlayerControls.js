@@ -8,7 +8,7 @@ import { useMusicPlayer } from './useMusicPlayer'
 
 export default function PlayerControls (props) {
 
-	const { state, setState } = useContext(MusicPlayerContext)
+	const { state } = useContext(MusicPlayerContext)
 	const { isPlaying, setIsPlaying } = state
 	/* using a custom Hook! */
 	const { playTrack, playPreviousTrack, playNextTrack } = useMusicPlayer()
@@ -16,6 +16,10 @@ export default function PlayerControls (props) {
 
 	return (
 		<React.Fragment>
+		<button id="PreviousButton" onClick={() => {playPreviousTrack()}}
+			>
+			<FontAwesomeIcon icon={faStepBackward}/>
+		</button>
 		<button id="PlayButton" onClick={(e) => {
 			playTrack(state.activeIndex)}}
 			>
@@ -23,16 +27,11 @@ export default function PlayerControls (props) {
 		</button>
 		<button id="NextButton" onClick={() => playNextTrack()}
 			>
-			Next Button
+			<FontAwesomeIcon icon={faStepForward}/>
 		</button>
-		<button id="PreviousButton" onClick={() => {playPreviousTrack()}}
-			>
-			Previous Button
-		</button>
-		<p id="MusicLabel">{state.tracks[state.activeIndex].name}</p>
-		<div>
-		{state.tracks[state.activeIndex].name}
-		</div>
+        <div className="current-track has-text-light">
+          <h3 id="MusicLabel">{state.tracks[state.activeIndex].name}</h3>
+        </div>
 		</React.Fragment>
 	)
 }

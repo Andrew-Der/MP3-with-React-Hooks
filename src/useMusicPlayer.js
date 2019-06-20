@@ -45,6 +45,7 @@ export function useMusicPlayer () {
   	playPreviousTrack,
   	playNextTrack,
   	trackList: state.tracks,
-  	isPlaying: state.isPlaying
+  	isPlaying: state.isPlaying,
+    currentTrackName: state.tracks[state.activeIndex].name
   }
 }

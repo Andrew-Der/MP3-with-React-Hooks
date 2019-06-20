@@ -10,8 +10,6 @@ export default function MusicPlayer (props) {
 // going to render children
 // going to have a provider.
 
-
-
 	const { children, defaultIndex, defaultPlaying } = props 
 	const [ isPlaying, setIsPlaying ] = useState(defaultPlaying)
 	const [ activeIndex, setActiveIndex ] = useState(defaultIndex)
@@ -53,7 +51,6 @@ export default function MusicPlayer (props) {
 			playTrack: playTrack
 		}}>
 		{children}
-			<button id="shit">SHIT</button>
 		</MusicPlayerContext.Provider>
 	)
 
